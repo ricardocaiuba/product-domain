@@ -21,20 +21,20 @@ namespace ProductBoundedContext.Data.Repositories
 
         public async Task<ProductEntityDomain> CreateProductAsync(ProductEntityDomain product)
         {
-
+            await _ProductDataContext.Connection.OpenAsync();
             using (var trans = _ProductDataContext.Connection.BeginTransaction())
             {
                 try
                 {
-                    await _ProductDataContext.Connection.InsertAsync(ProductEntityData.ToEntityData(product));
-
+                    await _ProductDataContext.Connection.InsertAsync(ProductEntityData.ToEntityData(product), trans);
                     trans.Commit();
+                    _ProductDataContext.Connection.Close();
                 }
-                catch (System.Exception)
+                catch (System.Exception ex)
                 {
                     trans.Rollback();
+                    _ProductDataContext.Connection.Close();
                 }
-
             }
 
             return product;
