@@ -7,6 +7,7 @@ namespace ProductBoundedContext.Data.EntityData
     [Table("Product")]
     public class ProductEntityData
     {
+        [ExplicitKey]
         public string Id { get; set; }
         public string Description { get; set; }
         public string BarCode { get; set; }
@@ -24,7 +25,10 @@ namespace ProductBoundedContext.Data.EntityData
                     Id = fromEntityData.Id,
                     Description = fromEntityData.Description,
                     BarCode = fromEntityData.BarCode,
-                    UnitMeasurementId = fromEntityData.UnitMeasurementId
+                    UnitMeasurementId = fromEntityData.UnitMeasurementId,
+                    Actve = fromEntityData.Actve,
+                    CreatedAt = fromEntityData.CreatedAt,
+                    UpdatedAt = fromEntityData.UpdatedAt
                 };
             }
             return null;
@@ -39,7 +43,10 @@ namespace ProductBoundedContext.Data.EntityData
                     Id = fromEntityDomain.Id,
                     Description = fromEntityDomain.Description,
                     BarCode = fromEntityDomain.BarCode,
-                    UnitMeasurementId = fromEntityDomain.UnitMeasurementId
+                    UnitMeasurementId = fromEntityDomain.UnitMeasurementId,
+                    Actve = fromEntityDomain.Actve,
+                    CreatedAt = fromEntityDomain.CreatedAt,
+                    UpdatedAt = fromEntityDomain.UpdatedAt
                 };
             }
             return null;

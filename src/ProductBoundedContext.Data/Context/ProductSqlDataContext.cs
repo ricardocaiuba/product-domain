@@ -1,4 +1,3 @@
-
 using System.Data.SqlClient;
 
 namespace ProductBoundedContext.Data.Context
@@ -11,6 +10,6 @@ namespace ProductBoundedContext.Data.Context
         {
             Connection = new SqlConnection(connectionString);
         }
-        
+
     }
 }
